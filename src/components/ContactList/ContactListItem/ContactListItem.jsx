@@ -5,14 +5,7 @@ import { Tabledata, DeleteButton } from '../ContactList.styled';
 export function ContactListItem({ name, number, onClick }) {
   return (
     <>
-      <thead>
-        <tr>
-          <Tabledata>Contact Name</Tabledata>
-          <Tabledata>Contact number</Tabledata>
-          <Tabledata>Delete Contact</Tabledata>
-        </tr>
-      </thead>
-      <tbody>
+           <tbody>
         <tr>
           <Tabledata>{name}</Tabledata>
           <Tabledata>{number}</Tabledata>

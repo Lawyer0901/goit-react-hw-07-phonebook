@@ -6,7 +6,8 @@ import { selectFilter, selectUsers } from 'redux/usersSelector';
 import { useDispatch } from 'react-redux';
 import { deleteUser } from 'redux/userNameSlice';
 import { useMemo } from 'react';
-import { Table, Wraper } from './ContactList.styled';
+import { Table, Wraper, Tabledata } from './ContactList.styled';
+
 // import { Container } from 'components/Container/Container';
 
 export function ContactList() {
@@ -26,6 +27,13 @@ export function ContactList() {
   return contacts.length > 0 ? (
     <Wraper>
       <Table>
+        <thead>
+          <tr>
+            <Tabledata>Contact Name</Tabledata>
+            <Tabledata>Contact number</Tabledata>
+            <Tabledata>Delete Contact</Tabledata>
+          </tr>
+        </thead>
         {contactListToDisplay.map(el => {
           return (
             <ContactListItem
