@@ -8,7 +8,7 @@ import { filterContact } from 'redux/filterSlice';
 export function Filter() {
   const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
-  console.log('This is filter:', filter);
+
   const handleFilterInput = ({ target: { value } }) => {
     dispatch(filterContact(value));
   };

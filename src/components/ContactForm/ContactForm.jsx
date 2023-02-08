@@ -23,7 +23,7 @@ export const ContactForm = () => {
   const hendleSubmit = e => {
     e.preventDefault();
     const newUser = { id: nanoid(), name: userName, number: userNumber };
-    console.log(newUser);
+    // console.log(newUser);
 
     const existUser = contacts.some(el => el.name === newUser.name);
 
