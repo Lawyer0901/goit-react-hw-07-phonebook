@@ -19,3 +19,6 @@ export const userNameSlice = createSlice({
 export const { addUser, deleteUser } = userNameSlice.actions;
 
 export default userNameSlice.reducer;
+
+// use this api
+// https://63e3df8fc919fe386c111093.mockapi.io/api/v1/
