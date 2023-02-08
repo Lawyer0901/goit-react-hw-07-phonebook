@@ -1,6 +1,6 @@
 import { useState } from 'react';
 // import PropTypes from 'prop-types';
-import { Form, Label, Input } from './ContactForm.styled';
+import { Form, Label, Input, AddButton } from './ContactForm.styled';
 import { addUser } from 'redux/userNameSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
@@ -63,7 +63,7 @@ export const ContactForm = () => {
           onChange={handleChangeName}
         />
       </Label>
-      <button>Add Contact</button>
+      <AddButton>Add Contact</AddButton>
     </Form>
   );
 };
