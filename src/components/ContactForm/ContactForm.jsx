@@ -1,10 +1,11 @@
 import { useState } from 'react';
 // import PropTypes from 'prop-types';
 import { Form, Label, Input, AddButton } from './ContactForm.styled';
-import { addUser } from 'redux/userNameSlice';
+// import { addUser } from 'redux/userNameSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import { selectUsers } from 'redux/usersSelector';
+import { addContact } from 'redux/contact.thunk';
 export const ContactForm = () => {
   const [userName, setUserName] = useState('');
   const [userNumber, setUserNumber] = useState('');
@@ -22,7 +23,8 @@ export const ContactForm = () => {
 
   const hendleSubmit = e => {
     e.preventDefault();
-    const newUser = { id: nanoid(), name: userName, number: userNumber };
+    // const form = e.target;
+    const newUser = { name: userName, phone: userNumber };
     // console.log(newUser);
 
     const existUser = contacts.some(el => el.name === newUser.name);
@@ -31,7 +33,7 @@ export const ContactForm = () => {
       alert(`${newUser.name} is already in contacts`);
       return;
     } else {
-      dispatch(addUser(newUser));
+      dispatch(addContact({ ...newUser }));
       setUserName('');
       setUserNumber('');
     }

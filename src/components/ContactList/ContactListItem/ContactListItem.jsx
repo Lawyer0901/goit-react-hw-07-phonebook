@@ -2,13 +2,13 @@
 // import PropTypes from 'prop-types';
 import { Tabledata, DeleteButton } from '../ContactList.styled';
 
-export function ContactListItem({ name, number, onClick }) {
+export function ContactListItem({ name, phone, onClick }) {
   return (
     <>
-           <tbody>
+      <tbody>
         <tr>
           <Tabledata>{name}</Tabledata>
-          <Tabledata>{number}</Tabledata>
+          <Tabledata>{phone}</Tabledata>
           <Tabledata>
             <DeleteButton onClick={onClick}>Delete contact</DeleteButton>
           </Tabledata>

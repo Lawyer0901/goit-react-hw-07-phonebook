@@ -2,29 +2,35 @@
 // import { Text } from './ContactList.styled';
 import { ContactListItem } from './ContactListItem/ContactListItem';
 import { useSelector } from 'react-redux';
-import { selectFilter, selectUsers } from 'redux/usersSelector';
+// import { selectFilter, selectUsers } from 'redux/usersSelector';
 import { useDispatch } from 'react-redux';
-import { deleteUser } from 'redux/userNameSlice';
-import { useMemo } from 'react';
+// import { deleteUser } from 'redux/userNameSlice';
+// import { useMemo } from 'react';
 import { Table, Wraper, Tabledata } from './ContactList.styled';
+import { useEffect } from 'react';
+import { deleteContact, fetchContacts } from 'redux/contact.thunk';
 
 // import { Container } from 'components/Container/Container';
 
 export function ContactList() {
-  const contacts = useSelector(selectUsers);
-  const filter = useSelector(selectFilter);
+  const contacts = useSelector(state => state.contacts.isLoading);
+  const filter = useSelector(state => state.contacts.items);
+
   const dispatch = useDispatch();
-  const filterNormalize = filter => filter.toLowerCase();
+  // const filterNormalize = filter => filter.toLowerCase();
 
-  const contactListToDisplay = useMemo(
-    () =>
-      contacts.filter(({ name }) =>
-        name.toLowerCase().includes(filterNormalize(filter))
-      ),
-    [contacts, filter]
-  );
+  // const contactListToDisplay = () => {
+  //   return filter.filter(({ name }) => name.toLowerCase().includes(filter));
+  // };
+  //
+  //
 
-  return contacts.length > 0 ? (
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
+  // useEffect(() => dispatch(fetchContacts()), [dispatch]);
+  return filter.length > 0 ? (
     <Wraper>
       <Table>
         <thead>
@@ -34,13 +40,13 @@ export function ContactList() {
             <Tabledata>Delete Contact</Tabledata>
           </tr>
         </thead>
-        {contactListToDisplay.map(el => {
+        {filter.map(el => {
           return (
             <ContactListItem
               key={el.id}
               name={el.name}
-              number={el.number}
-              onClick={() => dispatch(deleteUser(el.id))}
+              phone={el.phone}
+              onClick={() => dispatch(deleteContact(el.id))}
             />
           );
         })}
