@@ -4,12 +4,11 @@ import { addContact, deleteContact, fetchContacts } from './contact.thunk';
 export const userNameSlice = createSlice({
   name: 'contacts',
   initialState: {
-    contacts: {
-      items: [],
-      isLoading: false,
-      error: null,
-    },
+    items: [],
+    isLoading: false,
+    error: null,
   },
+
   // reducers: {
   //   addUser: (state, { payload }) => {
   //     state.contacts.push(payload);
