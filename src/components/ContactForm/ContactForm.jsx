@@ -10,7 +10,7 @@ export const ContactForm = () => {
   const [userName, setUserName] = useState('');
   const [userNumber, setUserNumber] = useState('');
   const dispatch = useDispatch();
-  const contacts = useSelector(selectUsers);
+  const contacts = useSelector(state => state.contacts.items);
 
   const handleChangeName = e => {
     const { name, value } = e.target;
