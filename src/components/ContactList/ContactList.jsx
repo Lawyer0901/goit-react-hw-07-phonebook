@@ -13,7 +13,7 @@ import { deleteContact, fetchContacts } from 'redux/contact.thunk';
 // import { Container } from 'components/Container/Container';
 
 export function ContactList() {
-  const contacts = useSelector(state => state.contacts.isLoading);
+  // const contacts = useSelector(state => state.contacts.isLoading);
   const filter = useSelector(state => state.contacts.items);
 
   const dispatch = useDispatch();

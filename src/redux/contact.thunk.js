@@ -29,7 +29,7 @@ export const addContact = createAsyncThunk(
     try {
       const response = await axios.post(
         'https://63e3df8fc919fe386c111093.mockapi.io/api/v1/contacts',
-        { newContact }
+        newContact
       );
       return response.data;
     } catch (e) {
