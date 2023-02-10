@@ -17,11 +17,12 @@ export function ContactList() {
   const contacts = useSelector(state => state.contacts.items);
 
   const dispatch = useDispatch();
-  // const filterNormalize = filter => filter.toLowerCase();
+  // const filterNormalize = contacts => contacts.toLowerCase();
 
-  // const contactListToDisplay = () => {
-  //   return filter.filter(({ name }) => name.toLowerCase().includes(filter));
-  // };
+  // const contactListToDisplay = contacts.filter(({ name }) =>
+  //   name.toLowerCase().includes(contacts)
+  // );
+
   //
   //
   // const handleDelete = () => dispatch(deleteContact());
