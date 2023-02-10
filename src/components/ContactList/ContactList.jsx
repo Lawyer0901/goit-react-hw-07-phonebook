@@ -14,7 +14,7 @@ import { deleteContact, fetchContacts } from 'redux/contact.thunk';
 
 export function ContactList() {
   // const contacts = useSelector(state => state.contacts.isLoading);
-  const filter = useSelector(state => state.contacts.items);
+  const contacts = useSelector(state => state.contacts.items);
 
   const dispatch = useDispatch();
   // const filterNormalize = filter => filter.toLowerCase();
@@ -24,13 +24,14 @@ export function ContactList() {
   // };
   //
   //
+  // const handleDelete = () => dispatch(deleteContact());
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
   // useEffect(() => dispatch(fetchContacts()), [dispatch]);
-  return filter.length > 0 ? (
+  return contacts.length > 0 ? (
     <Wraper>
       <Table>
         <thead>
@@ -40,7 +41,7 @@ export function ContactList() {
             <Tabledata>Delete Contact</Tabledata>
           </tr>
         </thead>
-        {filter.map(el => {
+        {contacts.map(el => {
           return (
             <ContactListItem
               key={el.id}

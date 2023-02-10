@@ -51,13 +51,14 @@ export const userNameSlice = createSlice({
   [deleteContact.pending]: state => {
     state.isLoading = true;
   },
-  [deleteContact.fulfilled](state, action) {
-    state.items.filter(contact => contact.id !== action.payload.id);
+  [deleteContact.fulfilled]: (state, action) => {
     state.isLoading = false;
     state.error = null;
-    // state.items.splice(index, 1);
+    // const index = state.items.findIndex(item => item.id === action.payload.id);
+    // state.items = state.items.splice(index, 1);
+    state.items = state.items.filter(item => item.id !== action.payload.id);
   },
-  [deleteContact.rejected](state, action) {
+  [deleteContact.rejected]: (state, action) => {
     state.isLoading = false;
     state.error = action.payload;
   },
@@ -67,6 +68,3 @@ export const userNameSlice = createSlice({
 export const { addUser, deleteUser } = userNameSlice.actions;
 
 export default userNameSlice.reducer;
-
-// use this api
-// https://63e3df8fc919fe386c111093.mockapi.io/api/v1/
