@@ -1,38 +1,22 @@
-// import PropTypes from 'prop-types';
-// import { Text } from './ContactList.styled';
 import { ContactListItem } from './ContactListItem/ContactListItem';
 import { useSelector } from 'react-redux';
-// import { selectFilter, selectUsers } from 'redux/usersSelector';
 import { useDispatch } from 'react-redux';
-// import { deleteUser } from 'redux/userNameSlice';
-// import { useMemo } from 'react';
 import { Table, Wraper, Tabledata } from './ContactList.styled';
 import { useEffect } from 'react';
 import { deleteContact, fetchContacts } from 'redux/contact.thunk';
 
-// import { Container } from 'components/Container/Container';
-
 export function ContactList() {
-  // const contacts = useSelector(state => state.contacts.isLoading);
   const contacts = useSelector(state => state.contacts.items);
   const filter = useSelector(state => state.filter.filter);
-
   const dispatch = useDispatch();
-  // const filterNormalize = contacts => contacts.toLowerCase();
-
   const contactListToDisplay = contacts.filter(({ name }) =>
     name.toLowerCase().includes(filter)
   );
-
-  //
-  //
-  // const handleDelete = () => dispatch(deleteContact());
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  // useEffect(() => dispatch(fetchContacts()), [dispatch]);
   return contacts.length > 0 ? (
     <Wraper>
       <Table>
@@ -59,14 +43,3 @@ export function ContactList() {
     <p>There is no contact</p>
   );
 }
-
-// ContactList.propTypes = {
-//   contacts: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.string.isRequired,
-//       name: PropTypes.string.isRequired,
-//       number: PropTypes.string.isRequired,
-//     })
-//   ).isRequired,
-//   deleteContact: PropTypes.func,
-// };
