@@ -15,7 +15,7 @@ export const deleteContact = createAsyncThunk(
       const { data } = await axios.delete(
         `https://63e3df8fc919fe386c111093.mockapi.io/api/v1/contacts/${contactId}`
       );
-      console.log(data);
+      //   console.log(data);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
