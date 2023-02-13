@@ -2,11 +2,11 @@
 import { LabelFilter, InputFilter } from './Filter.styled';
 // import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectFilter } from 'redux/usersSelector';
+// import { selectFilter } from 'redux/usersSelector';
 import { filterContact } from 'redux/filterSlice';
 
 export function Filter() {
-  const filter = useSelector(selectFilter);
+  const filter = useSelector(state => state.filter.filter);
   const dispatch = useDispatch();
 
   const handleFilterInput = ({ target: { value } }) => {

@@ -15,13 +15,14 @@ import { deleteContact, fetchContacts } from 'redux/contact.thunk';
 export function ContactList() {
   // const contacts = useSelector(state => state.contacts.isLoading);
   const contacts = useSelector(state => state.contacts.items);
+  const filter = useSelector(state => state.filter.filter);
 
   const dispatch = useDispatch();
   // const filterNormalize = contacts => contacts.toLowerCase();
 
-  // const contactListToDisplay = contacts.filter(({ name }) =>
-  //   name.toLowerCase().includes(contacts)
-  // );
+  const contactListToDisplay = contacts.filter(({ name }) =>
+    name.toLowerCase().includes(filter)
+  );
 
   //
   //
@@ -42,7 +43,7 @@ export function ContactList() {
             <Tabledata>Delete Contact</Tabledata>
           </tr>
         </thead>
-        {contacts.map(el => {
+        {contactListToDisplay.map(el => {
           return (
             <ContactListItem
               key={el.id}
