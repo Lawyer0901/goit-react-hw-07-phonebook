@@ -38,33 +38,31 @@ export const userNameSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       state.items.push(action.payload);
-
-      // console.log(state.items);
     },
 
     [addContact.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     },
-  },
-  [deleteContact.pending]: state => {
-    state.isLoading = true;
-  },
-  [deleteContact.fulfilled]: (state, action) => {
-    state.isLoading = false;
-    state.error = null;
-    const index = state.items.findIndex(item => item.id === action.payload.id);
-    state.items = state.items.splice(index, 1);
-    // state.items = state.items.filter(item => item.id !== action.payload.id);
-    // state.items.filter(el => el.id !== action.payload);
-  },
-  [deleteContact.rejected]: (state, action) => {
-    state.isLoading = false;
-    state.error = action.payload;
+
+    [deleteContact.pending]: state => {
+      state.isLoading = true;
+    },
+    [deleteContact.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.error = null;
+      const index = state.items.findIndex(
+        item => item.id === action.payload.id
+      );
+      state.items = state.items.splice(index, 1);
+      // state.items = state.items.filter(item => item.id !== action.payload.id);
+      // state.items.filter(el => el.id !== action.payload);
+    },
+    [deleteContact.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });
-
-// Action creators are generated for each case reducer function
-// export const { addUser, deleteUser } = userNameSlice.actions;
 
 export default userNameSlice.reducer;
